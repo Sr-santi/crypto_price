@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platzi store</title>
+</head>
+<body>
+    <div id="app">
+        <img 
+        v-on:mouseover="toggleShowPrices" v-on:mouseout="toggleShowPrices"
+        v-bind:src="img" v-bind:alt="name" 
+        width="100px">
+        <h1 v-bind:class= "changePercent > 0 ? 'green' : 'red' " >
+            {{ name }}
+            <span v-if="changePercent > 70">😏</span>
+            <span v-else-if="changePercent < 30"> 😨</span>
+            <span v-else>😶</span>
+
+            <!-- <span v-show="changePercent > 0">🤯</span>
+            <span v-show="changePercent < 0"> 😨</span>
+            <span v-show="changePercent === 0" >😶</span> -->
+
+            <span v-on:click="toggleShowPrices">
+                 {{ showPrices ? '😍' : '😴'}}
+            </span>
+        </h1>
+
+
+        <ul v-show="showPrices">
+            <li v-for="(element, index) in pricesWithDays" v-bind_key="element.day">
+                {{index}} - {{element.day}} - {{element.value}}
+
+            </li>
+        </ul>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
