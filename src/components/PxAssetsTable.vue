@@ -15,14 +15,25 @@
     </thead>
     <tbody>
       <tr
+        v-for="element in assets"
+        v-bind:key="element.id"
         class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100"
       >
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>
+          <img
+            v-bind:src="`https://static.coincap.io/assets/icons/${element.symbol.toLowerCase()}@2x.png`"
+            v-bind:alt="element.name"
+          />
+        </td>
+        <td>
+          <b>#{{ element.rank }}</b>
+        </td>
+        <td>{{ element.name }}</td>
+        <td>{{ element.priceUsd }}</td>
+        <td>{{ element.marketCapUsd }}</td>
+        <td>
+          {{ element.changePercent24Hr }}
+        </td>
         <td class="hidden sm:block"></td>
       </tr>
     </tbody>
@@ -31,7 +42,7 @@
 
 <script>
 export default {
-  name: "PxAssetsTable",
+  name: 'PxAssetsTable',
 
   props: {
     assets: {
@@ -39,16 +50,16 @@ export default {
       default: () => [],
     },
   },
-};
+}
 </script>
 
 <style scoped>
 .up::before {
-  content: "👆";
+  content: '👆';
 }
 
 .down::before {
-  content: "👇";
+  content: '👇';
 }
 
 td {

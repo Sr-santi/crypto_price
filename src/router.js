@@ -1,32 +1,32 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-import Home from "@/views/Home.vue";
-import Error from "@/views/Error";
-import About from "@/views/About";
+import Home from '@/views/Home.vue'
+import Error from '@/views/Error'
+import About from '@/views/About'
 
-Vue.use(VueRouter); //setea como un plugin
+Vue.use(VueRouter) //setea como un plugin
 
 export default new VueRouter({
-  mode: "history",
+  mode: 'history',
 
   routes: [
     {
-      path: "/",
-      name: "Home",
+      path: '/',
+      name: 'Home',
       component: Home,
     },
 
     {
-      path: "/about",
-      name: "about",
+      path: '/about',
+      name: 'about',
       component: About,
     },
 
     {
-      path: "*",
-      name: "error",
+      path: '*',
+      name: 'error',
       component: Error,
     },
   ],
-});
+})
