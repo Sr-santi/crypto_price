@@ -1,17 +1,32 @@
 import Vue from "vue";
-import Router from "vue-router";
-import Home from "@/views/Home";
+import VueRouter from "vue-router";
 
-Vue.use(Router);
+import Home from "@/views/Home.vue";
+import Error from "@/views/Error";
+import About from "@/views/About";
 
-export default new Router({
+Vue.use(VueRouter); //setea como un plugin
+
+export default new VueRouter({
   mode: "history",
 
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Home",
       component: Home,
+    },
+
+    {
+      path: "/about",
+      name: "about",
+      component: About,
+    },
+
+    {
+      path: "*",
+      name: "error",
+      component: Error,
     },
   ],
 });
