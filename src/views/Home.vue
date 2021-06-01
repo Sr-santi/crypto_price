@@ -1,6 +1,12 @@
 <template>
   <div>
-    <px-assets-table v-bind:assets="assets" />
+    <climbing-box-loader
+      :color="'#68d391'"
+      :loading="isLoading"
+      :size="20"
+    ></climbing-box-loader>
+    <px-assets-table v-if="!isLoading" v-bind:assets="assets" />
+    <!-- Aqui le pasamos assets -->
   </div>
 </template>
 
@@ -15,12 +21,17 @@ export default {
 
   data() {
     return {
+      isLoading: false,
       assets: [],
     }
   },
 
   created() {
-    api.getAssets().then((assets) => (this.assets = assets))
+    this.isLoading = true
+    api
+      .getAssets()
+      .then((assets) => (this.assets = assets))
+      .finally(() => (this.isLoading = false))
   },
 }
 </script>
